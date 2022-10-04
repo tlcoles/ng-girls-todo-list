@@ -4,13 +4,10 @@ import { NgSelectOption } from '@angular/forms';
 @Component({
   selector: 'app-input-button-unit',
   template: `
-    <p>
-    input-button-unit works!
-    The title is: {{ title }}
-    </p>
-    <input [value]="title"
-           (keyup.enter)="changeTitle($event.target.value)">
-    <button (click)="changeTitle('Button clicked!')">
+    <input  #inputElementRef
+            [value]="title"
+            (keyup.enter)="changeTitle($event.target.value)">
+    <button (click)="changeTitle(inputElementRef.value)">
       Save
     </button>
   `,
@@ -26,6 +23,7 @@ export class InputButtonUnitComponent implements OnInit {
   }
 
   changeTitle(newTitle: string): void {
+    console.log(newTitle);
     this.title = newTitle;
   }
 }
